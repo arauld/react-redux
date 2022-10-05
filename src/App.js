@@ -1,11 +1,26 @@
-import React from "react";
-import "./style.css";
+import { connect } from 'react-redux';
+import Counter from './Counter';
+//Map Redux state to component props
+function mapStateToProps(state) {
+  return {
+    countValue: state.Counter,
+  };
+  //Action
+  let increaseAction = { type: 'increase' };
+  let decreaseAcction = { type: 'decrease' };
 
-export default function App() {
-  return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
-  );
+  //Map Redux actions to component props
+  function mapDispatchToProps(dispatch) {
+    return {
+      increaseCount: function () {
+        return dispatch(increaseAction);
+      },
+      decreaseCount: function () {
+        return dispatch(decreaseCount);
+      },
+    };
+  }
 }
+//The HOC
+let connectedComponent = connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connectedComponent;
