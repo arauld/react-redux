@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import counter from './reducer';
 import App from './App';
 //import './index.css';
-
 let destination = document.querySelector('#container');
 //création du store
 let store = createStore(counter);
